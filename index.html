@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--
+    Open mobile web browser
+    App asks for your location
+    User clicks OK
+    App looks at list of possible activities
+    App chooses closest one
+    App displays details on screen:
+        What it is
+        Where it is
+        When it is/How long it is
+        Button to accept
+        Button to reject
+    Upon clicking accept, app
+        Gets a new activity ready for after the current event
+        Alerts friends?
+    Upon clicking reject, app asks you why
+        Based on reason, suggestions a new activity
+    -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Now Do This</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+</head>
+
+<body ng-app="nowDoThis">
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                <span class="glyphicon glyphicon-flash"></span>
+                Now Do This
+            </a>
+        </div>
+    </nav>
+
+    <div class="container" ng-controller="ProjectController">
+        <div ng-show="activityDetails">
+            <div class="row">
+                <div class="col-xs-3"><h3><span class="text-muted">{{now.action}}</span></h3></div>
+                <div class="col-xs-9"><h1>{{now.event}}</h1></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-3"><h3><span class="text-muted">at</span></h3></div>
+                <div class="col-xs-9"><h1>{{now.location}}</h1></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-3"><h3><span class="text-muted">from</span></h3></div>
+                <div class="col-xs-9"><h1>{{now.time}}</h1></div>
+            </div>
+        </div>
+
+        <div ng-show="map">
+            <h1>Map and directions</h1>
+        </div>
+
+        <hr>
+
+        <form role="form">
+            <button type="button" class="btn btn-success btn-lg btn-block" ng-click="letsGo()" ng-show="activityDetails">Let's go</button>
+            <button type="button" class="btn btn-danger btn-lg btn-block" ng-click="somethingElse()">Something else</button>
+        </form>
+    </div>
+
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
